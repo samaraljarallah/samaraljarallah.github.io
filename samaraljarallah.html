@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Samar Aljarallah</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Newsreader:opsz,wght@6..72,400;500;600&display=swap">
+<style>
+/* Layout: an index-style page. Each section is a heading, then rows with dotted leaders running to dates, like a table of contents. Arabic is the default, English is one tap away. */
+:root {
+  --bg: #F7F5FA;
+  --surface: #FFFFFF;
+  --ink: #1D1626;
+  --muted: #62586F;
+  --rule: #CFC6DB;
+  --accent: #5A2D82;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #EAE1F4;
+  --f-display-ar: "Amiri", "Noto Naskh Arabic", "Times New Roman", serif;
+  --f-display-en: "Newsreader", Georgia, "Times New Roman", serif;
+  --f-body: "IBM Plex Sans Arabic", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14101A;
+    --surface: #1D1726;
+    --ink: #F0EBF6;
+    --muted: #A99FB8;
+    --rule: #3A3047;
+    --accent: #C7A6EA;
+    --accent-ink: #14101A;
+    --accent-soft: #2B2038;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #14101A;
+  --surface: #1D1726;
+  --ink: #F0EBF6;
+  --muted: #A99FB8;
+  --rule: #3A3047;
+  --accent: #C7A6EA;
+  --accent-ink: #14101A;
+  --accent-soft: #2B2038;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: 16px;
+  line-height: 1.8;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 48px;
+}
+html[lang="en"] body { line-height: 1.65; }
+.wrap { max-width: 880px; margin-inline: auto; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.display { font-weight: 400; text-wrap: balance; }
+html[lang="ar"] .display { font-family: var(--f-display-ar); }
+html[lang="en"] .display { font-family: var(--f-display-en); }
+html[lang="en"] .caps { letter-spacing: 0.08em; text-transform: uppercase; }
+
+.top { display: flex; justify-content: flex-end; padding-bottom: 28px; }
+.chip {
+  font: inherit; font-size: 0.9rem; font-weight: 500;
+  background: transparent; color: var(--ink);
+  border: 1px solid var(--rule); border-radius: 999px;
+  padding: 0.3rem 0.95rem; cursor: pointer; line-height: 1.5;
+}
+.chip:hover { border-color: var(--accent); color: var(--accent); }
+
+/* hero */
+.eyebrow { color: var(--accent); font-size: 0.88rem; font-weight: 600; margin: 0 0 0.6rem; }
+h1.display { font-size: clamp(2.7rem, 11.5vw, 5.4rem); line-height: 1.08; margin: 0; font-weight: 700; }
+html[lang="en"] h1.display { font-weight: 500; letter-spacing: -0.01em; }
+.focus { font-size: clamp(1.35rem, 5vw, 2rem); color: var(--muted); margin: 0.5rem 0 0; line-height: 1.4; }
+.intro { max-width: 60ch; margin: 1.5rem 0 0; font-size: 1.05rem; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; margin-top: 1.5rem; }
+.btn {
+  display: inline-block; text-decoration: none; font-weight: 500;
+  background: var(--accent); color: var(--accent-ink);
+  border-radius: 6px; padding: 0.55rem 1.2rem; line-height: 1.6;
+}
+.btn:hover { filter: brightness(1.08); }
+.btn.alt { background: transparent; color: var(--accent); border: 1px solid var(--accent); padding-block: calc(0.55rem - 1px); }
+.mail {
+  display: inline-flex; align-items: center; gap: 0.6rem; min-width: 0; max-width: 100%;
+  border: 1px solid var(--rule); background: var(--surface); border-radius: 6px;
+  padding-block: 0.2rem; padding-inline: 0.85rem 0.2rem; font-size: 0.92rem;
+}
+.mail bdi { min-width: 0; overflow-wrap: anywhere; }
+.copy {
+  font: inherit; font-size: 0.85rem; font-weight: 500; cursor: pointer;
+  background: var(--accent-soft); color: var(--accent);
+  border: 0; border-radius: 4px; padding: 0.35rem 0.8rem; white-space: nowrap;
+}
+.facts {
+  margin: 2.25rem 0 0; padding-top: 1.25rem; border-top: 1px solid var(--rule);
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem;
+}
+.facts > div { min-width: 0; }
+.facts dt { font-size: 0.78rem; font-weight: 600; color: var(--muted); }
+.facts dd { margin: 0.2rem 0 0; font-size: 0.95rem; line-height: 1.6; }
+
+/* sections */
+section { margin-top: 3rem; padding-top: 1.4rem; border-top: 1px solid var(--rule); }
+h2.display { font-size: 2rem; line-height: 1.25; margin: 0 0 1.25rem; font-weight: 700; }
+html[lang="en"] h2.display { font-weight: 500; }
+
+.rows { display: grid; gap: 1rem; }
+.row { display: flex; align-items: baseline; gap: 0.6rem; }
+.row .t { font-weight: 500; flex: 0 1 auto; min-width: 0; line-height: 1.55; }
+.row .o { display: block; color: var(--muted); font-weight: 400; font-size: 0.88rem; line-height: 1.55; }
+.row .d { flex: 1; display: flex; align-items: baseline; gap: 0.6rem; min-width: 0; justify-content: flex-end; }
+.row .d::before {
+  content: ""; flex: 1; min-width: 1rem;
+  border-bottom: 1.5px dotted var(--rule); transform: translateY(-0.25em);
+}
+.row .d span { white-space: nowrap; color: var(--muted); font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+@media (max-width: 560px) {
+  .row { flex-wrap: wrap; gap: 0; }
+  .row .t { flex-basis: 100%; }
+  .row .d { flex: none; }
+  .row .d::before { display: none; }
+}
+
+.job { display: grid; gap: 0.5rem; }
+.job + .job { margin-top: 1.75rem; }
+.pts { margin: 0; padding-inline-start: 1.25rem; color: var(--ink); font-size: 0.95rem; }
+.pts li { margin-top: 0.15rem; }
+.pts li::marker, .laws li::marker { color: var(--accent); }
+.note { margin: 0.1rem 0 0; color: var(--muted); font-size: 0.95rem; max-width: 62ch; }
+
+/* work */
+.feature {
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 10px;
+  padding: 1.25rem;
+}
+.kind { color: var(--accent); font-size: 0.82rem; font-weight: 600; margin: 0; }
+h3.display { font-size: 1.65rem; line-height: 1.3; margin: 0.3rem 0 0.6rem; font-weight: 700; }
+html[lang="en"] h3.display { font-weight: 500; }
+.feature p.body { margin: 0; max-width: 62ch; }
+.laws { columns: 2 15rem; column-gap: 2rem; margin: 1rem 0; padding-inline-start: 1.5rem; }
+html[lang="ar"] .laws { list-style-type: arabic-indic; }
+.laws li { break-inside: avoid; padding-block: 0.1rem; }
+.more { color: var(--accent); font-weight: 500; text-underline-offset: 0.2em; }
+.paper { margin-top: 1.5rem; padding-top: 1.1rem; border-top: 1px dotted var(--rule); }
+.paper h3 { font-size: 1.3rem; }
+.job > .more { justify-self: start; }
+.pts .more { white-space: nowrap; }
+.paper p.body { margin: 0 0 0.6rem; max-width: 62ch; }
+.paper .rows { margin-top: 0.9rem; }
+h2 + .paper { margin-top: 0; padding-top: 0; border-top: 0; }
+bdi.nw { white-space: nowrap; }
+
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem 2rem; margin: 0 0 1.75rem; }
+.skills dt { font-size: 0.78rem; font-weight: 600; color: var(--muted); }
+.skills dd { margin: 0.2rem 0 0; font-size: 0.95rem; line-height: 1.7; }
+
+footer { margin-top: 3.5rem; padding-top: 1rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: 0.85rem; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+<style>body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
+</head>
+<body>
+
+
+<script>
+(function () {
+  var l = 'ar';
+  try { if ((location.hash || '').toLowerCase() === '#en') l = 'en'; } catch (e) {}
+  document.documentElement.lang = l;
+  document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
+})();
+</script>
+
+<div class="wrap">
+  <header class="top"><button id="lang" class="chip" type="button"></button></header>
+  <main id="app"></main>
+  <footer id="foot"></footer>
+</div>
+
+<script>
+var LINKEDIN = 'https://www.linkedin.com/in/samar-aljarallah-219a97322';
+var GUIDE_URL = 'https://drive.google.com/file/d/188mFQfSTVnG96gQ26Y0137veMbIwwFeN/view';
+var X_URL = 'https://x.com/lawbysamar';
+var EMAIL = 'samaraljarallah@gmail.com';
+
+var D = {
+  name: { ar: 'سمر الجارالله', en: 'Samar Aljarallah' },
+  intro: {
+    ar: 'خريجة قانون شغوفة بالقانون وتطبيقه، وأسعى لأكون إضافة حقيقية في المجال القانوني، أعمل محامية متدربة، وأهتم بصياغة العقود والقانون التجاري، والتحكيم، والحوكمة والالتزام (<bdi dir="ltr">GRC</bdi>)، والتقنيات القانونية، والعقار.',
+    en: 'Law graduate with a passion for the law and its practice, aiming to make a real contribution to the legal field. I work as a trainee lawyer, and I am interested in contract drafting, commercial law, arbitration, governance and compliance (GRC), legal technology, and real estate.'
+  },
+  linkedin: { ar: 'لنكد إن', en: 'LinkedIn' },
+  xlabel: { ar: 'تويتر (X)', en: 'X (Twitter)' },
+  copy: { ar: 'نسخ', en: 'Copy' },
+  copied: { ar: 'تم النسخ', en: 'Copied' },
+  open: { ar: 'عرض', en: 'View' },
+  facts: [
+    { k: { ar: 'التعليم', en: 'Education' },
+      v: { ar: 'بكالوريوس القانون، جامعة القصيم · 2026 · بمرتبة الشرف الأولى', en: 'LL.B., Qassim University · 2026 · First-Class Honors' } },
+    { k: { ar: 'حاليًا', en: 'Now' },
+      v: { ar: 'محامية متدربة، شركة د. وليد الخليفة للمحاماة والاستشارات القانونية', en: 'Trainee lawyer, Walid Al-Khalifa Law Firm & Legal Consultancy' } },
+    { k: { ar: 'الاهتمام', en: 'Focus' },
+      v: { ar: 'صياغة العقود · القانون التجاري · التحكيم · التقنيات القانونية · العقار', en: 'Contract drafting · Commercial law · Arbitration · Legal technology · Real estate' } }
+  ],
+
+  workH: { ar: 'أعمالي', en: 'My work' },
+  guide: {
+    title: { ar: 'فهرسة أهم الأنظمة القانونية', en: 'Index of Key Saudi Laws' },
+    body: {
+      ar: 'كثير من وقت الباحث القانوني يضيع في البحث عن النظام والمادة المناسبة. أعددتُ وصممتُ هذا المرجع السريع ليجمع سبعة من أهم الأنظمة في مكان واحد، فيسهل الوصول إلى المادة ويقصر وقت البحث.',
+      en: 'Researchers lose a lot of time looking for the right law and article. I prepared and designed this quick reference to bring seven essential Saudi laws together in one place, so provisions are easier to find and research takes less time.'
+    },
+    laws: [
+      { ar: 'نظام المعاملات المدنية', en: 'Civil Transactions Law' },
+      { ar: 'نظام المحاكم التجارية', en: 'Commercial Courts Law' },
+      { ar: 'نظام الإجراءات الجزائية', en: 'Criminal Procedure Law' },
+      { ar: 'نظام الأحوال الشخصية', en: 'Personal Status Law' },
+      { ar: 'نظام المرافعات الشرعية', en: 'Law of Sharia Procedure' },
+      { ar: 'نظام التنفيذ', en: 'Enforcement Law' },
+      { ar: 'نظام الإثبات', en: 'Law of Evidence' }
+    ],
+    link: { ar: 'عرض الملف', en: 'View the file' }
+  },
+  works: [
+    { t: { ar: 'الدليل الإرشادي لتصنيف الدعاوى في ناجز', en: 'Guide to Case Classification on Najiz' },
+      b: { ar: 'خارطة طريق ميسرة للتقاضي تساعد المستفيد على اختيار التصنيف الرئيسي والفرعي للدعوى بشكل صحيح داخل منصة ناجز. يشمل دعاوى الأحوال الشخصية، والتجارية، والتنفيذ، والجزائية، والعامة، والعمالية، والإنهاءات.', en: 'A step-by-step roadmap for litigants, helping them choose the correct main and sub-classification for a case on the Najiz platform. It covers personal status, commercial, enforcement, criminal, general, labor, and non-contentious petitions (Inhaa’at).' },
+      u: 'https://drive.google.com/file/d/1Bfb-z2YV52LefhDNFlLR1r0kbchlAJ7j/view' }
+  ],
+
+  papersH: { ar: 'الأوراق البحثية', en: 'Research papers' },
+  papers: [
+    { t: { ar: 'حجية التوقيع الإلكتروني في الإثبات الجنائي', en: 'The Evidentiary Value of Electronic Signatures in Criminal Proof' },
+      o: { ar: 'منشور في منصة الباحث القانوني. يتناول التحول من الدعائم الورقية إلى الإلكترونية، ومدى الاعتداد بالتوقيع الإلكتروني كوسيلة إثبات في المجال الجنائي وقوته الثبوتية في ضوء التنظيمات المعاصرة.', en: 'Published on the Legal Researcher Platform. It examines the shift from paper to electronic records, and how far an electronic signature is accepted as criminal evidence and what probative weight it carries under current regulation.' },
+      u: 'https://legalresearchs.com/research/34' },
+    { t: { ar: 'مدى حجية التقارير الصادرة عن الذكاء الاصطناعي كدليل خبرة في الإثبات', en: 'The Evidentiary Weight of AI-Generated Reports as Expert Evidence' } },
+    { t: { ar: 'المدد الإجرائية في نظام المرافعات الشرعية ولائحته التنفيذية', en: 'Procedural Time Limits under the Law of Sharia Procedure and its Implementing Regulations' } },
+    { t: { ar: 'جرائم التحرش بواسطة الذكاء الاصطناعي', en: 'Harassment Crimes Committed Using Artificial Intelligence' } }
+  ],
+
+  expH: { ar: 'الخبرات المهنية', en: 'Professional experience' },
+  jobs: [
+    { t: { ar: 'محامية متدربة', en: 'Trainee Lawyer' },
+      o: { ar: 'شركة د. وليد الخليفة للمحاماة والاستشارات القانونية', en: 'Walid Al-Khalifa Law Firm & Legal Consultancy' },
+      d: { ar: 'يونيو 2026 – الآن', en: 'Jun 2026 – Present' },
+      pts: [
+        { ar: 'صياغة ومراجعة مختلف أنواع العقود والاتفاقيات.', en: 'Drafted and reviewed various types of contracts and agreements.' },
+        { ar: 'الترافع وحضور الجلسات القضائية.', en: 'Pleading cases and attending court hearings.' },
+        { ar: 'إعداد صحائف الدعوى، والمذكرات الجوابية، ومذكرات الاعتراض القانونية بشتى أنواعها.', en: 'Prepared statements of claim, response memoranda, and objection memoranda of various types.' },
+        { ar: 'إعداد وهيكلة العروض الفنية والمالية والعروض السعرية لمختلف المشاريع.', en: 'Prepared and structured technical and financial proposals and price quotations for various projects.' },
+        { ar: 'إدارة وأرشفة المستندات والملفات القانونية للشركة.', en: 'Managed and archived the firm’s legal documents and files.' }
+      ] },
+    { t: { ar: 'متدربة تعاونية', en: 'Co-op Trainee' },
+      o: { ar: 'شركة مصعب العيدي للمحاماة', en: 'Musab Aleidi Law Firm' },
+      d: { ar: 'فبراير 2026 – يونيو 2026', en: 'Feb 2026 – Jun 2026' },
+      pts: [
+        { ar: 'المساعدة في صياغة صحف الدعاوى والمذكرات الجوابية ومذكرات الاعتراض.', en: 'Assisted in drafting statements of claim, response memoranda, and objection memoranda.' },
+        { ar: 'تقديم الطلبات القضائية إلكترونيًا عبر منصة ناجز.', en: 'Filed electronic motions through the Najiz platform.' },
+        { ar: 'إعداد الأوراق البحثية الجماعية والفردية.', en: 'Prepared individual and group research papers.' }
+      ] }
+  ],
+
+  actH: { ar: 'المشاركات الدولية والمسابقات', en: 'International participations & competitions' },
+  acts: [
+    { t: { ar: 'منافسة التحكيم التجاري الدولية', en: 'International Commercial Arbitration Competition' },
+      o: { ar: 'جامعة القصيم', en: 'Qassim University' },
+      d: { ar: 'يوليو 2025 – فبراير 2026', en: 'Jul 2025 – Feb 2026' },
+      pts: [
+        { ar: 'إعداد بحوث قانونية حول الأنظمة والسوابق الدولية، وصياغة مذكرتين تحكيميتين.', en: 'Prepared legal research on international laws, regulations and case law, and drafted two arbitration memoranda.' },
+        { ar: 'تنسيق وإدارة المرافعات الودية بصفتي مسؤولة التواصل مع فرق ومحكمين من أكثر من 25 دولة.', en: 'As Communications Officer, coordinated and managed friendly pleadings with teams and arbitrators from over 25 countries.' }
+      ],
+      link: { t: { ar: 'دليل تجربة المنافسة', en: 'Competition experience guide' }, u: 'https://drive.google.com/file/d/1OYK9VvuJwHvs4iDJwpjkBhwpNOXQHb_o/view' } },
+    { t: { ar: 'مسابقة المحكمة الصورية لحقوق الإنسان', en: 'Human Rights Moot Court Competition' },
+      o: { ar: 'مركز الأمم المتحدة للتدريب والتوثيق', en: 'UN Human Rights Training and Documentation Centre' },
+      d: { ar: 'أبريل 2026 – يوليو 2026', en: 'Apr 2026 – Jul 2026' },
+      pts: [
+        { ar: 'إجراء بحوث متخصصة في نصوص حقوق الإنسان والسوابق القضائية.', en: 'Conducted specialized research on human rights texts and case law.' },
+        { ar: 'صياغة مذكرتي دفاع للمدعية والمدعى عليها.', en: 'Drafted memorials for both the Applicant and the Respondent.' }
+      ] },
+    { t: { ar: 'عضو أكاديمي', en: 'Academic Member' },
+      o: { ar: 'الهيئة السعودية للمحامين', en: 'Saudi Bar Association' },
+      d: { ar: 'سبتمبر 2023 – سبتمبر 2024', en: 'Sep 2023 – Sep 2024' },
+      pts: [
+        { ar: 'حضور أكثر من 20 ورشة عمل قانونية ودورة تطوير مهني متخصصة.', en: 'Attended over 20 specialized legal workshops and a professional development course.' }
+      ] }
+  ],
+
+  volH: { ar: 'التطوع والأنشطة الطلابية', en: 'Volunteering & student activities' },
+  vols: [
+    { t: { ar: 'منصة العمل التطوعي', en: 'Volunteer Work Platform' },
+      pts: [
+        { ar: 'إنجاز أكثر من 250 ساعة تطوعية معتمدة في دعم وتنفيذ المبادرات المجتمعية والتوعوية.', en: 'Completed over 250 certified volunteer hours supporting and carrying out community and awareness initiatives.' }
+      ] },
+    { t: { ar: 'جامعة القصيم', en: 'Qassim University' },
+      pts: [
+        { ar: 'متحدثة لدى عمادة شؤون الطلاب.', en: 'Speaker for the Deanship of Student Affairs.' },
+        { ar: 'عضو نادي كلية الشريعة.', en: 'Member of the College of Sharia Club.' },
+        { ar: 'نائبة رئيس نادي الإعلام.', en: 'Vice President of the Media Club.' },
+        { ar: 'رئيسة نادي الطهي: عملتُ على قيادة النادي وتأسيس مدونته الرسمية. <a class="more" href="https://culinarystudentsclubqu.blogspot.com/" target="_blank" rel="noopener">زيارة المدونة ↗</a>', en: 'President of the Culinary Club: I led the club and set up its official blog. <a class="more" href="https://culinarystudentsclubqu.blogspot.com/" target="_blank" rel="noopener">Visit the blog ↗</a>' },
+        { ar: 'عضو في عدد من الأندية الطلابية المركزية بالجامعة.', en: 'Member of several central student clubs at the university.' }
+      ] }
+  ],
+
+  certH: { ar: 'الشهادات والدورات', en: 'Certifications & training' },
+  certs: [
+    { t: { ar: 'الأنظمة واللوائح العامة للسوق المالية السعودية (<bdi dir="ltr" class="nw">CME-1B</bdi>)', en: 'General Saudi Capital Market Rules and Regulations (CME-1B)' }, d: { ar: '2025', en: '2025' } },
+    { t: { ar: 'مساعد معتمد في إدارة المشاريع (<bdi dir="ltr">CAPM</bdi>)', en: 'Certified Associate in Project Management (CAPM)' }, d: { ar: '2026', en: '2026' } },
+    { t: { ar: 'دورة مهارات صياغة العقود', en: 'Contract Drafting Skills Course' }, o: { ar: 'الهيئة السعودية للمحامين', en: 'Saudi Bar Association' }, d: { ar: '2024', en: '2024' } },
+    { t: { ar: 'قانون العقود: من الثقة إلى الوعد إلى التعاقد', en: 'Contract Law: From Trust to Promise to Contract' }, o: { ar: 'جامعة هارفارد', en: 'Harvard University' }, d: { ar: 'سبتمبر 2026', en: 'Sep 2026' } },
+    { t: { ar: 'دورة الأوراق التجارية (12 ساعة تدريبية)', en: 'Commercial Papers (12-hour course)' }, o: { ar: 'مركز عدل للتدريب', en: 'Adel Training Center' }, d: { ar: 'سبتمبر 2026', en: 'Sep 2026' } },
+    { t: { ar: 'الذكاء الاصطناعي والقانون: المسؤولية والشفافية والحوكمة', en: 'AI and the Law: Liability, Transparency, and Governance' }, o: { ar: 'جمعية طلبة القانون السعوديين، جامعة واشنطن في سانت لويس', en: 'Saudi Law Students Association, Washington University in St. Louis' }, d: { ar: 'سبتمبر 2026', en: 'Sep 2026' } },
+    { t: { ar: 'جلسات الفنتك الصيفية', en: 'Fintech Summer Sessions' }, d: { ar: '2025', en: '2025' } },
+    { t: { ar: 'برنامج الإعداد المهني', en: 'Career Readiness Program' }, o: { ar: 'مؤسسة مسك', en: 'Misk Foundation' }, d: { ar: 'فبراير 2025', en: 'Feb 2025' } },
+    { t: { ar: 'برنامج ماكينزي للمستقبل (<bdi dir="ltr">McKinsey Forward</bdi>)', en: 'McKinsey Forward Program' }, d: { ar: '2025', en: '2025' } },
+    { t: { ar: 'إتمام أكثر من 20 دورة من الهيئة السعودية للمحامين', en: 'Completed over 20 courses with the Saudi Bar Association' } },
+    { t: { ar: 'إتمام دورات من المركز السعودي للتحكيم التجاري', en: 'Completed courses with the Saudi Center for Commercial Arbitration' }, d: { ar: '2026', en: '2026' } }
+  ],
+
+  skillH: { ar: 'المهارات واللغات', en: 'Skills & languages' },
+  skills: [
+    { k: { ar: 'المهارات القانونية', en: 'Legal skills' },
+      v: { ar: 'صياغة العقود ومراجعتها · صياغة صحائف الدعوى · صياغة مختلف المذكرات القانونية · إعداد العروض المالية والفنية · إعداد العروض السعرية · التحليل القانوني · البحث القانوني · الترافع', en: 'Contract drafting and review · Drafting statements of claim · Drafting various legal memoranda · Preparing financial and technical proposals · Preparing price quotations · Legal analysis · Legal research · Pleading' } },
+    { k: { ar: 'المهارات الناعمة', en: 'Soft skills' },
+      v: { ar: 'التفاوض · التحدث أمام الجمهور · التفكير النقدي وحل المشكلات · إدارة الوقت · التواصل الفعال والعمل الجماعي · المرونة والتكيف', en: 'Negotiation · Public speaking · Critical thinking and problem solving · Time management · Effective communication and teamwork · Flexibility and adaptability' } }
+  ],
+  langs: [
+    { t: { ar: 'العربية', en: 'Arabic' }, d: { ar: 'اللغة الأم', en: 'Native' } },
+    { t: { ar: 'الإنجليزية', en: 'English' }, d: { ar: 'متقن', en: 'Advanced' } },
+    { t: { ar: 'الإيطالية', en: 'Italian' }, d: { ar: 'مبتدئ', en: 'Beginner' } }
+  ],
+  foot: { ar: 'سمر أحمد الجارالله · 2026', en: 'Samar Ahmad Aljarallah · 2026' }
+};
+
+var lang = document.documentElement.lang === 'en' ? 'en' : 'ar';
+function p(o) { return o[lang]; }
+
+function row(t, o, d) {
+  return '<div class="row"><span class="t">' + p(t) + (o ? '<span class="o">' + p(o) + '</span>' : '') + '</span>' +
+    (d ? '<span class="d"><span>' + p(d) + '</span></span>' : '') + '</div>';
+}
+function list(pts) {
+  var h = '<ul class="pts">';
+  pts.forEach(function (x) { h += '<li>' + p(x) + '</li>'; });
+  return h + '</ul>';
+}
+function linkEl(l) {
+  return '<a class="more" href="' + l.u + '" target="_blank" rel="noopener">' + p(l.t) + ' ↗</a>';
+}
+
+function render() {
+  var h = '';
+  h += '<h1 class="display">' + p(D.name) + '</h1>';
+  h += '<p class="intro">' + p(D.intro) + '</p>';
+  h += '<div class="actions">';
+  h += '<a class="btn" href="' + LINKEDIN + '" target="_blank" rel="noopener">' + p(D.linkedin) + ' ↗</a>';
+  h += '<a class="btn alt" href="' + X_URL + '" target="_blank" rel="noopener">' + p(D.xlabel) + ' ↗</a>';
+  h += '<div class="mail"><bdi dir="ltr" id="mail">' + EMAIL + '</bdi>';
+  h += '<button type="button" class="copy" data-copy="' + EMAIL + '"><span class="c1">' + p(D.copy) + '</span><span class="c2" hidden>' + p(D.copied) + '</span></button></div>';
+  h += '</div>';
+  h += '<dl class="facts">';
+  D.facts.forEach(function (f) { h += '<div><dt class="caps">' + p(f.k) + '</dt><dd>' + p(f.v) + '</dd></div>'; });
+  h += '</dl>';
+
+  h += '<section id="work"><h2 class="display">' + p(D.workH) + '</h2>';
+  h += '<div class="paper">';
+  h += '<h3 class="display">' + p(D.guide.title) + '</h3>';
+  h += '<p class="body">' + p(D.guide.body) + '</p><ol class="laws">';
+  D.guide.laws.forEach(function (x) { h += '<li>' + p(x) + '</li>'; });
+  h += '</ol><a class="more" href="' + GUIDE_URL + '" target="_blank" rel="noopener">' + p(D.guide.link) + ' ↗</a></div>';
+  D.works.forEach(function (w) {
+    h += '<div class="paper"><h3 class="display">' + p(w.t) + '</h3><p class="body">' + p(w.b) + '</p><a class="more" href="' + w.u + '" target="_blank" rel="noopener">' + p(D.guide.link) + ' ↗</a></div>';
+  });
+  h += '</section>';
+
+  h += '<section id="papers"><h2 class="display">' + p(D.papersH) + '</h2><div class="rows">';
+  D.papers.forEach(function (x) {
+    h += '<div class="row"><span class="t">' + p(x.t) + (x.o ? '<span class="o">' + p(x.o) + '</span>' : '') + '</span>' +
+      (x.u ? '<span class="d"><span><a class="more" href="' + x.u + '" target="_blank" rel="noopener">' + p(D.open) + ' ↗</a></span></span>' : '') + '</div>';
+  });
+  h += '</div></section>';
+
+  h += '<section id="experience"><h2 class="display">' + p(D.expH) + '</h2>';
+  D.jobs.forEach(function (j) {
+    h += '<article class="job">' + row(j.t, j.o, j.d) + list(j.pts) + '</article>';
+  });
+  h += '</section>';
+
+  h += '<section id="activities"><h2 class="display">' + p(D.actH) + '</h2>';
+  D.acts.forEach(function (a) {
+    h += '<article class="job">' + row(a.t, a.o, a.d) + list(a.pts) + (a.link ? linkEl(a.link) : '') + '</article>';
+  });
+  h += '</section>';
+
+  h += '<section id="volunteering"><h2 class="display">' + p(D.volH) + '</h2>';
+  D.vols.forEach(function (v) {
+    h += '<article class="job">' + row(v.t, null, null) + list(v.pts) + '</article>';
+  });
+  h += '</section>';
+
+  h += '<section id="certifications"><h2 class="display">' + p(D.certH) + '</h2><div class="rows">';
+  D.certs.forEach(function (c) { h += row(c.t, c.o, c.d); });
+  h += '</div></section>';
+
+  h += '<section id="skills"><h2 class="display">' + p(D.skillH) + '</h2><dl class="skills">';
+  D.skills.forEach(function (s) { h += '<div><dt class="caps">' + p(s.k) + '</dt><dd>' + p(s.v) + '</dd></div>'; });
+  h += '</dl><div class="rows">';
+  D.langs.forEach(function (x) { h += row(x.t, null, x.d); });
+  h += '</div></section>';
+
+  document.getElementById('app').innerHTML = h;
+  document.getElementById('foot').textContent = p(D.foot);
+  document.getElementById('lang').textContent = lang === 'ar' ? 'English' : 'العربية';
+  document.getElementById('lang').setAttribute('lang', lang === 'ar' ? 'en' : 'ar');
+}
+
+document.getElementById('lang').addEventListener('click', function () {
+  lang = lang === 'ar' ? 'en' : 'ar';
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  render();
+});
+
+function selectMail() {
+  var el = document.getElementById('mail');
+  if (!el) return;
+  var r = document.createRange();
+  r.selectNodeContents(el);
+  var s = window.getSelection();
+  s.removeAllRanges();
+  s.addRange(r);
+}
+
+document.addEventListener('click', function (e) {
+  var b = e.target.closest ? e.target.closest('[data-copy]') : null;
+  if (!b) return;
+  var c1 = b.querySelector('.c1'), c2 = b.querySelector('.c2');
+  function done() {
+    c1.hidden = true; c2.hidden = false;
+    setTimeout(function () { c1.hidden = false; c2.hidden = true; }, 1800);
+  }
+  try {
+    navigator.clipboard.writeText(b.getAttribute('data-copy')).then(done, selectMail);
+  } catch (err) { selectMail(); }
+});
+
+render();
+</script>
+
+</body>
+</html>
